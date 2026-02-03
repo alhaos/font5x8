@@ -32,9 +32,12 @@ function App() {
   const handleClick = (id: number) => {
     setActiveItems((prev) => {
       const newSet = new Set(prev);
-      newSet.has(id) ? newSet.delete(id) : newSet.add(id);
+      if (newSet.has(id)) {
+        newSet.delete(id);
+      } else {
+        newSet.add(id);
+      }
 
-      // Обновляем данные шрифта после изменения выбора
       updateFontData(newSet);
 
       return newSet;
